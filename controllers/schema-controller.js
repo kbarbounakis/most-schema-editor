@@ -35,13 +35,4 @@ SchemaBaseController.prototype.schema = function (callback) {
     });
 };
 
-SchemaBaseController.prototype.script = function(callback)
-{
-    if (web.common.isEmptyString(this.context.params.name)) {
-        return callback(new web.common.HttpBadRequest());
-    }
-    var scriptFile = this.context.params.name + '.js';
-    return callback(null, this.file(path.resolve(__dirname, './../js/' + scriptFile), scriptFile));
-};
-
 if (typeof module !== 'undefined') module.exports = SchemaBaseController;

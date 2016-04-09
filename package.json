@@ -22,7 +22,10 @@
   "dependencies": {
     "async": "^1.5.2",
     "glob": "^7.0.3",
-    "most-web": "~1.7.0",
+    "most-query": "^0.1.27",
+    "most-data": "^0.2.18",
+    "most-data-sqlite": "^0.1.10",
+    "most-web": "^1.7.50",
     "q": "^1.4.1"
   },
   "author": "Kyriakos Barbounakis <k.barbounakis@gmail.com>",

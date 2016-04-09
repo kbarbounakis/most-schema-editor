@@ -32,11 +32,18 @@
  * @ignore
  */
 var SchemaBaseController = require('./controllers/schema-controller'),
+    mgr = require('./controllers/schema-manager'),
     EditorBaseController = require('./controllers/editor-controller'),
     path = require('path');
 if (typeof exports !== 'undefined')
 {
     module.exports = {
+        /**
+         * @returns {SchemaManager}
+         */
+        getSchemaManager: function() {
+            return mgr.getSchemaManager();
+        },
         /**
          * @param {HttpApplication} app
          */

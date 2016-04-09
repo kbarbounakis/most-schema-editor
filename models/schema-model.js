@@ -6,12 +6,12 @@
  * @private
  */
 var web = require("most-web"),
+    md = require("most-data"),
     util = require("util"), 
     Q = require("q"),
     glob = require("glob"),
     async = require("async"),
-    path = require("path"),
-    md = require('most-data');
+    path = require("path");
 
 function getConnectOptions_() {
     if (web.common.isNullOrUndefined(this.id)) {
@@ -26,13 +26,13 @@ function getConnectOptions_() {
  * @augments {DataObject}
  */
 function SchemaModel(obj) {
-    SchemaModel.super_.call(this, 'Project', obj);
+    SchemaModel.super_.call(this, 'Schema', obj);
     var self = this, context_;
 
     self.getContext = function() {
         if (context_) { return context_; }
-        context_ = md.createContext("project");
-        context_.db.options.database = this.getConnectOptions().database;
+        context_ = md.createContext("schema");
+        //context_.db.options.database = self.getConnectOptions().database;
         /**
          * @param name
          * @returns {DataModel|undefined}

@@ -67,6 +67,7 @@
     "title": "Inherits",
     "description": "The name of the model which is inherited by this model.",
     "type": "DataModel",
+    "many":false,
     "mapping": {
       "parentModel": "DataModel",
       "parentField": "name", "childModel": "DataModel", "childField": "inherits",
