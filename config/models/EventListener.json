@@ -1,0 +1,36 @@
+{
+    "name": "EventListener", "id": 1950, "title": "Listeners", "hidden": false, "sealed": false, "abstract": false,
+    "version": "1.0",
+    "fields": [{
+        "name": "id",
+        "title": "Id",
+        "type": "Integer",
+        "nullable": false,
+        "primary": true
+    }, {
+        "name": "name",
+        "title": "Name",
+        "type": "Text",
+        "nullable": false,
+        "size":80
+    }, {
+        "name": "type",
+        "title": "Type",
+        "type": "Text",
+        "nullable": false
+    }, {
+        "name": "model",
+        "title": "Model",
+        "type": "DataModel",
+        "nullable": false,
+        "mapping": {
+            "parentModel": "DataModel",
+            "parentField": "name", "childModel": "DataField", "childField": "model",
+            "associationType": "association", "cascade": "delete"
+        }
+    }],
+    "privileges":[
+        { "mask":1, "type":"global", "account":"*" },
+        { "mask":15, "type":"global" }
+    ]
+}

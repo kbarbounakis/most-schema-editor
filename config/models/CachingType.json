@@ -1,0 +1,34 @@
+{
+    "name": "CachingType", "id": 1900, "title": "Caching Types", "hidden": false, "sealed": false, "abstract": false,
+    "version": "1.0",
+    "fields": [{
+        "name": "id",
+        "title": "Id",
+        "type": "Integer",
+        "nullable": false,
+        "primary": true
+    }, {
+        "name": "name",
+        "title": "Name",
+        "type": "Text",
+        "nullable": false,
+        "size":80
+    }, {
+        "name": "description",
+        "title": "Description",
+        "type": "Text",
+        "nullable": false
+    }],
+    "privileges":[
+        { "mask":1, "type":"global", "account":"*" },
+        { "mask":15, "type":"global" }
+    ],
+    "seed":[ {
+            "id":100, "name":"none", "description":"Data will never be cached"
+        }, {
+            "id":200, "name":"always", "description":"Data will always be cached"
+        }, {
+            "id":300, "name":"conditional","description":"Data will conditionally be cached"
+        }
+    ]
+}

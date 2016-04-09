@@ -1,0 +1,90 @@
+{"name": "DataField", "id": 2020, "title": "Fields", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+    {
+        "name": "id",
+        "title": "Id",
+        "type": "Counter",
+        "nullable": false,
+        "primary": true
+    },
+    {
+        "name": "name",
+        "title": "Name",
+        "description": "The name of this field.",
+        "type": "Text",
+        "nullable":false
+    },
+  {
+    "name": "model",
+    "title": "Model",
+    "type": "DataModel",
+    "nullable":false,
+    "mapping": {
+      "parentModel": "DataModel",
+      "parentField": "name", "childModel": "DataField", "childField": "model",
+      "associationType": "association", "cascade": "delete"
+    }
+  },
+    {
+        "name": "title",
+        "title": "Title",
+        "description": "A title for this field.",
+        "type": "Text",
+      "nullable":false
+    },
+  {
+    "name": "description",
+    "title": "Description",
+    "description": "A description for this field.",
+    "type": "Text"
+  },
+  {
+    "name": "type",
+    "title": "Type",
+    "description": "The type of this field.",
+    "type": "Text",
+    "nullable":false
+  },
+  {
+    "name": "nullable",
+    "title": "Nullable",
+    "description": "Indicates whether this field is nullable or not. The default value is true.",
+    "type": "Boolean",
+    "value":"javascript:return true;"
+  },
+  {
+    "name": "expandable",
+    "title": "Expandable",
+    "description": "Indicates whether this field is expandable or not. The default value is false.",
+    "type": "Boolean",
+    "value":"javascript:return false;"
+  },
+  {
+    "name": "nested",
+    "title": "Nested",
+    "description": "Indicates whether this field may hold a nested object or not. The default value is false.",
+    "type": "Boolean",
+    "value":"javascript:return false;"
+  },
+  {
+    "name": "readonly",
+    "title": "Readonly",
+    "description": "Indicates whether this field is readonly or not. The default value is false",
+    "type": "Boolean",
+    "value":"javascript:return false;"
+  },
+  {
+    "name": "value",
+    "title": "Default Value",
+    "description": "Defines the default value for this field, if any",
+    "type": "Text"
+  },
+  {
+    "name": "calculation",
+    "title": "Calculated Value",
+    "description": "Defines the calculated value for this field, if any",
+    "type": "Text"
+  }
+],"privileges":[
+  { "mask":1, "type":"global", "account":"*" },
+    { "mask":15, "type":"global" }
+]}

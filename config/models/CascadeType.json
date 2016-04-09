@@ -1,0 +1,39 @@
+{
+    "name": "CascadeType", "id": 1920, "title": "Cascade Type", "hidden": false, "sealed": false, "abstract": false,
+    "version": "1.0",
+    "fields": [{
+        "name": "id",
+        "title": "Id",
+        "type": "Integer",
+        "nullable": false,
+        "primary": true
+    }, {
+        "name": "name",
+        "title": "Name",
+        "type": "Text",
+        "nullable": false,
+        "size":80
+    }, {
+        "name": "description",
+        "title": "Description",
+        "type": "Text",
+        "nullable": false
+    }],
+    "privileges":[
+        { "mask":1, "type":"global", "account":"*" },
+        { "mask":15, "type":"global" }
+    ],
+    "seed":[ {
+            "id":100, "name":"none", "description":"No action taken on related objects."
+        }, {
+            "id":200, "name":"restrict", "description":"Prevent the associated object from being deleted when referencing objects exist."
+        }, {
+        "id":300, "name":"null", "description":"Remove the value of the referencing attribute for all referencing objects."
+    }, {
+            "id":400, "name":"default", "description":"Set the default of the referencing attribute, if any."
+        },
+        {
+            "id":500, "name":"delete", "description":"Delete the referencing objects."
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "name": "DataView", "id": 1960, "title": "Views", "hidden": false, "sealed": false, "abstract": false,
+    "version": "1.0",
+    "fields": [{
+        "name": "id",
+        "title": "Id",
+        "type": "Counter",
+        "nullable": false,
+        "primary": true
+    }, {
+        "name": "name",
+        "title": "Name",
+        "type": "Text"
+    }, {
+        "name": "description",
+        "title": "Description",
+        "type": "Text"
+    },{
+      "name": "filter",
+      "title": "Filter",
+      "description":"Describes the filter expression for this view.",
+      "type": "Text"
+    }, {
+      "name": "order",
+      "title": "Order",
+      "description":"Describes the order expression for this view.",
+      "type": "Text"
+    }, {
+      "name": "group",
+      "title": "Group",
+      "description":"Describes the group by expression for this view.",
+      "type": "Text"
+    },{
+      "name": "fields",
+      "title": "Fields",
+      "description": "Contains the collection of constraint fields.",
+      "type": "DataField",
+      "mapping": {
+        "associationAdapter": "ConstraintFields", "parentModel": "Constraint",
+        "parentField": "id", "childModel": "DataField", "childField": "id",
+        "associationType": "junction", "cascade": "delete",
+        "select":[ "id", "name", "title" ]
+      }
+    }
+      ,{
+      "name": "model",
+      "title": "Model",
+      "type": "DataModel",
+      "nullable": false,
+      "mapping": {
+        "parentModel": "DataModel",
+        "parentField": "name", "childModel": "Privilege", "childField": "model",
+        "associationType": "association", "cascade": "delete"
+      }
+    }],
+    "privileges":[
+        { "mask":1, "type":"global", "account":"*" },
+        { "mask":15, "type":"global" }
+    ],
+    "seed":[ {
+            "id":100, "name":"self", "description":"Describes a self privilege."
+        }, {
+            "id":200, "name":"parent", "description":"Describes a parent privilege."
+        }, {
+        "id":300, "name":"item", "description":"Describes an item privilege."
+    }, {
+            "id":400, "name":"global", "description":"Describes a global privilege."
+        }
+    ]
+}

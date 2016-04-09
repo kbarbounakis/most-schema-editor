@@ -1,0 +1,87 @@
+{"name": "DataModel", "id": 2010, "title": "Models", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+    {
+        "name": "id",
+        "title": "Id",
+        "type": "Integer",
+        "nullable": false,
+        "primary": true,
+        "value":"javascript:return this.int(90000,900000);"
+    },
+    {
+        "name": "name",
+        "title": "Name",
+        "description": "The name of this model.",
+        "type": "Text",
+        "nullable":false
+    },
+    {
+        "name": "title",
+        "title": "Title",
+        "description": "The title of this model.",
+        "type": "Text",
+      "nullable":false
+    },
+    {
+      "name": "hidden",
+      "title": "Hidden",
+      "description": "Indicates whether this model is hidden or not. The default value is false.",
+      "type": "Boolean",
+      "value":"javascript:return false;"
+    },
+  {
+    "name": "sealed",
+    "title": "Sealed",
+    "description": "Indicates whether this model is sealed or not. The default value is false.",
+    "type": "Boolean",
+    "value":"javascript:return false;"
+  },
+  {
+    "name": "abstract",
+    "title": "Abstract",
+    "description": "Indicates whether this model is abstract or not. The default value is false.",
+    "type": "Boolean",
+    "value":"javascript:return false;"
+  },
+  {
+    "name": "type",
+    "title": "Type",
+    "description": "An internal type for this model.",
+    "type": "Text"
+  },
+  {
+    "name": "version",
+    "title": "Version",
+    "description": "The version of this model.",
+    "type": "Text",
+    "value":"javascript:return '1.0';",
+    "nullable":false
+  },
+  {
+    "name": "classPath",
+    "title": "Class Path",
+    "description": "A path which represents the module that exports the model object class, if any.",
+    "type": "Text"
+  },
+  {
+    "name": "inherits",
+    "title": "Inherits",
+    "description": "The name of the model which is inherited by this model.",
+    "type": "DataModel",
+    "mapping": {
+      "parentModel": "DataModel",
+      "parentField": "name", "childModel": "DataModel", "childField": "inherits",
+      "associationType": "association", "cascade": "none"
+    }
+  },
+  {
+    "name": "caching",
+    "title": "Caching",
+    "description": "Indicates the caching mode of this model. The default value is none",
+    "type": "CachingType",
+    "value":"javascript:return '1.0';",
+    "nullable":false
+  }
+],"privileges":[
+  { "mask":1, "type":"global", "account":"*" },
+    { "mask":15, "type":"global" }
+]}

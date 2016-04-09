@@ -19,6 +19,12 @@
     "editor",
     "extension"
   ],
+  "dependencies": {
+    "async": "^1.5.2",
+    "glob": "^7.0.3",
+    "most-web": "~1.7.0",
+    "q": "^1.4.1"
+  },
   "author": "Kyriakos Barbounakis <k.barbounakis@gmail.com>",
   "license": "BSD3-Clause",
   "bugs": {

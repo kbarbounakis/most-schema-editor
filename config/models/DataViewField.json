@@ -1,0 +1,61 @@
+{"name": "DataViewField", "id": 2060, "title": "View Fields", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+    {
+        "name": "id",
+        "title": "Id",
+        "type": "Counter",
+        "nullable": false,
+        "primary": true
+    },
+    {
+        "name": "name",
+        "title": "Name",
+        "description": "The name of this field.",
+        "type": "Text",
+        "nullable":false
+    },
+  {
+    "name": "format",
+    "title": "Format",
+    "description": "The format of this field.",
+    "type": "Text"
+  },
+    {
+        "name": "title",
+        "title": "Title",
+        "description": "A title for this field.",
+        "type": "Text"
+    },
+  {
+    "name": "nullable",
+    "title": "Nullable",
+    "description": "Indicates whether this field is nullable or not. The default value is true.",
+    "type": "Boolean"
+  },
+  {
+    "name": "expandable",
+    "title": "Expandable",
+    "description": "Indicates whether this field is expandable or not. The default value is false.",
+    "type": "Boolean"
+  },
+  {
+    "name": "readonly",
+    "title": "Readonly",
+    "description": "Indicates whether this field is readonly or not. The default value is false",
+    "type": "Boolean"
+  },
+  {
+    "name": "value",
+    "title": "Default Value",
+    "description": "Defines the default value for this field, if any",
+    "type": "Text"
+  },
+  {
+    "name": "calculation",
+    "title": "Calculated Value",
+    "description": "Defines the calculated value for this field, if any",
+    "type": "Text"
+  }
+],"privileges":[
+  { "mask":1, "type":"global", "account":"*" },
+    { "mask":15, "type":"global" }
+]}

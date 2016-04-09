@@ -1,0 +1,30 @@
+{
+    "name": "ConstraintType", "id": 1970, "title": "Constraint Types", "hidden": false, "sealed": false, "abstract": false,
+    "version": "1.0",
+    "fields": [{
+        "name": "id",
+        "title": "Id",
+        "type": "Integer",
+        "nullable": false,
+        "primary": true
+    }, {
+        "name": "name",
+        "title": "Name",
+        "type": "Text",
+        "nullable": false,
+        "size":80
+    }, {
+        "name": "description",
+        "title": "Description",
+        "type": "Text",
+        "nullable": false
+    }],
+    "privileges":[
+        { "mask":1, "type":"global", "account":"*" },
+        { "mask":15, "type":"global" }
+    ],
+    "seed":[ {
+            "id":100, "name":"unique", "description":"Defines a unique constraint."
+        }
+    ]
+}

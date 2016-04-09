@@ -1,0 +1,53 @@
+{
+    "name": "PrivilegeMask", "id": 1930, "title": "Privilege Masks", "hidden": false, "sealed": false, "abstract": false,
+    "version": "1.0",
+    "fields": [{
+        "name": "id",
+        "title": "Id",
+        "type": "Integer",
+        "nullable": false,
+        "primary": true
+    }, {
+        "name": "name",
+        "title": "Name",
+        "type": "Text",
+        "nullable": false,
+        "size":80
+    }, {
+        "name": "description",
+        "title": "Description",
+        "type": "Text",
+        "nullable": false
+    }],
+    "privileges":[
+        { "mask":1, "type":"global", "account":"*" },
+        { "mask":15, "type":"global" }
+    ],
+    "seed":[
+        {
+            "id": 1,
+            "name": "Read",
+            "description": "Describes a read permission mask."
+        },
+        {
+            "id": 2,
+            "name": "Create",
+            "description": "Describes a create permission mask."
+        },
+        {
+            "id": 4,
+            "name": "Update",
+            "description": "Describes an update permission mask."
+        },
+        {
+            "id": 8,
+            "name": "Delete",
+            "description": "Describes a delete permission mask."
+        },
+        {
+            "id": 16,
+            "name": "Execute",
+            "description": "Describes a delete permission mask."
+        }
+    ]
+}
