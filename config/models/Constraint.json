@@ -15,12 +15,8 @@
         "name": "description",
         "title": "Description",
         "type": "Text"
-    },{
-      "name": "account",
-      "title": "Account",
-      "type": "Text"
-    },{
-      "name": "dataFields",
+    }, {
+      "name": "fields",
       "title": "Fields",
       "description": "Contains the collection of constraint fields.",
       "type": "DataField",

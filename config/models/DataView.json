@@ -31,7 +31,7 @@
       "description":"Describes the group by expression for this view.",
       "type": "Text"
     },{
-      "name": "dataFields",
+      "name": "fields",
       "title": "Fields",
       "description": "Contains the collection of constraint fields.",
       "type": "DataViewField",

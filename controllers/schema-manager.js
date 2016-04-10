@@ -77,6 +77,27 @@ SchemaManager.prototype.initialize = function() {
                     }
                     x.model = model.name;
                 });
+                if (model.constraints) {
+                    model.constraints.forEach(function(constraint) {
+                        if (constraint.fields) {
+                            var constraintFields = constraint.fields.slice(0);
+                            constraint.fields = [];
+                            constraintFields.forEach(function (z) {
+                                //find field
+                                var field = parentModel.attributes.find(function (y) {
+                                    return (z === y.name);
+                                });
+                                if (field) {
+                                    constraint.fields.push({
+                                        "name":field.name,
+                                        "model":field.model
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+
             });
             return self.getContext().model("DataModel").silent().save(models).then(function () {
                 return cb();
