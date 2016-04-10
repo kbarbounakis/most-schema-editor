@@ -31,13 +31,14 @@
       "description":"Describes the group by expression for this view.",
       "type": "Text"
     },{
-      "name": "fields",
+      "name": "dataFields",
       "title": "Fields",
       "description": "Contains the collection of constraint fields.",
-      "type": "DataField",
+      "type": "DataViewField",
+      "many":true,
       "mapping": {
-        "associationAdapter": "ConstraintFields", "parentModel": "Constraint",
-        "parentField": "id", "childModel": "DataField", "childField": "id",
+        "associationAdapter": "ViewFields", "parentModel": "DataView",
+        "parentField": "id", "childModel": "DataViewField", "childField": "id",
         "associationType": "junction", "cascade": "delete",
         "select":[ "id", "name", "title" ]
       }
@@ -52,6 +53,13 @@
         "parentField": "name", "childModel": "Privilege", "childField": "model",
         "associationType": "association", "cascade": "delete"
       }
+    }], "constraints":[
+    {
+      "name":"UniqueModelView",
+      "description":"A view must be unique for each model",
+      "fields":[
+        "name","model"
+      ]
     }],
     "privileges":[
         { "mask":1, "type":"global", "account":"*" },

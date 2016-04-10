@@ -1,4 +1,4 @@
-{"name": "DataModel", "id": 2010, "title": "Models", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+{"name": "DataModel", "id": 2010, "title": "Models", "classPath":"most-schema-editor/models/data-model-model", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
     {
         "name": "id",
         "title": "Id",
@@ -82,6 +82,18 @@
     "value":"javascript:return '1.0';",
     "nullable":false
   }
+], "constraints":[
+  {
+    "name":"UniqueModelName",
+    "description":"Model name be unique accross different models.",
+    "fields":[
+      "name","model"
+    ]
+  }], "eventListeners":[
+  { "name":"Data Model Fields Listener", "type":"most-schema-editor/listeners/data-model-fields-listener"},
+  { "name":"Data Model Privileges Listener", "type":"most-schema-editor/listeners/data-model-privileges-listener"},
+  { "name":"Data Model Event Listeners Listener", "type":"most-schema-editor/listeners/data-model-event-listeners-listener"},
+  { "name":"Data Model Constraints Listener", "type":"most-schema-editor/listeners/data-model-constraints-listener"}
 ],"privileges":[
   { "mask":1, "type":"global", "account":"*" },
     { "mask":15, "type":"global" }

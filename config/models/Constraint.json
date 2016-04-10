@@ -20,10 +20,11 @@
       "title": "Account",
       "type": "Text"
     },{
-      "name": "fields",
+      "name": "dataFields",
       "title": "Fields",
       "description": "Contains the collection of constraint fields.",
       "type": "DataField",
+      "many":true,
       "mapping": {
         "associationAdapter": "ConstraintFields", "parentModel": "Constraint",
         "parentField": "id", "childModel": "DataField", "childField": "id",
@@ -41,19 +42,17 @@
         "parentField": "name", "childModel": "Privilege", "childField": "model",
         "associationType": "association", "cascade": "delete"
       }
-    }],
+    }], "constraints":[
+  {
+    "name":"UniqueModelListener",
+    "description":"A contraint must be unique for each model",
+    "fields":[
+      "name","model"
+    ]
+  }],
     "privileges":[
         { "mask":1, "type":"global", "account":"*" },
         { "mask":15, "type":"global" }
     ],
-    "seed":[ {
-            "id":100, "name":"self", "description":"Describes a self privilege."
-        }, {
-            "id":200, "name":"parent", "description":"Describes a parent privilege."
-        }, {
-        "id":300, "name":"item", "description":"Describes an item privilege."
-    }, {
-            "id":400, "name":"global", "description":"Describes a global privilege."
-        }
-    ]
+    "seed":[ ]
 }

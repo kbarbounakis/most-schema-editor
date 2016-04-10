@@ -2,10 +2,27 @@
     {
         "name": "id",
         "title": "Id",
-        "type": "Counter",
+        "type": "Integer",
         "nullable": false,
         "primary": true
     },
+    {
+      "name": "parent",
+      "title": "Parent Field",
+      "type": "DataField",
+      "nullable": false,
+      "mapping": {
+        "parentModel": "DataField",
+        "parentField": "id", "childModel": "DataAssociationMapping", "childField": "parent",
+        "associationType": "association", "cascade": "none"
+      }
+    },
+  {
+    "name": "associationAdapter",
+    "title": "Association Adapter",
+    "description": "The name of the association adapter.",
+    "type": "Text"
+  },
     {
         "name": "parentModel",
         "title": "Parent Model",
@@ -41,7 +58,6 @@
     "type": "AssociationType",
     "nullable":false,
     "expandable":true,
-    "nested":true,
     "mapping": {
       "parentModel": "AssociationType",
       "parentField": "name", "childModel": "DataAssociationMapping", "childField": "associationType",
@@ -59,6 +75,14 @@
       "parentField": "name", "childModel": "DataAssociationMapping", "childField": "cascade",
       "associationType": "association", "cascade": "none"
     }
+  }
+], "constraints":[
+  {
+    "name":"UniqueDataAssociation",
+    "description":"A data association must be unique for each field",
+    "fields":[
+      "parent"
+    ]
   }
 ],"privileges":[
   { "mask":1, "type":"global", "account":"*" },

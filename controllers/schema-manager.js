@@ -11,10 +11,19 @@ var fs = require("fs"),
     util = require("util"),
     Q = require("q");
 
-function SchemaManager() {
+
+/**
+ * @param {DataContext|*=} parentContext
+ * @constructor
+ */
+function SchemaManager(parentContext) {
 
     var self = this;
     var context_;
+
+    self.getParentContext = function() {
+        return parentContext;
+    };
 
     self.getContext = function() {
         if (context_) { return context_; }
@@ -36,6 +45,15 @@ function SchemaManager() {
                 return null;
             }
         };
+
+        context_.getSchemaManager = function() {
+            return self;
+        };
+
+        context_.getParentContext = function() {
+            return parentContext;
+        };
+
         return context_;
     }
 }
@@ -43,50 +61,43 @@ function SchemaManager() {
 SchemaManager.prototype.initialize = function() {
     var self = this, deferred = Q.defer();
     self.runInContext(function(cb) {
-        return self.getModels().then(function(models) {
+        return self.getNativeModels().then(function(models) {
             models.forEach(function(x) { x.$state = 1; });
-            //enumerate models
+            //prepare models
+            models.forEach(function (model) {
+                var parentModel = self.getParentContext().model(model.name);
+                model.fields.forEach(function (x) {
+                    var field = parentModel.attributes.find(function (y) {
+                        return (y.name === x.name);
+                    });
+                    if (field) {
+                        if (field.model!==model.name) {
+                            x.derivedFrom = field.model;
+                        }
+                    }
+                    x.model = model.name;
+                });
+            });
             return self.getContext().model("DataModel").silent().save(models).then(function () {
-                cb();
+                return cb();
+            }).catch(function (err) {
+                return cb(err);
             });
         }).catch(function(err) {
             return cb(err);
         });
     }, function(err) {
-        if (err) { return deferred.resolve(err); }
+        if (err) { return deferred.reject(err); }
         deferred.resolve();
     });
     return deferred.promise;
 };
 
-function getSchemaModels() {
-    var deferred = Q.defer();
-    glob(path.resolve("./","config/models/*.json"), function(err, files) {
-        if (err) {
-            return deferred.resolve(err);
-        }
-        var result = [];
-        async.eachSeries(files, function(file, cb) {
-            try {
-                result.push(require(file));
-                return cb();
-            }
-            catch (e) {
-                cb(e);
-            }
-        }, function(err) {
-            if (err) {
-                return deferred.resolve(err);
-            }
-            return deferred.resolve(result);
-        });
-    });
-    return deferred.promise;
-}
 
-SchemaManager.prototype.getModels = function() {
+SchemaManager.prototype.getNativeModels = function() {
     var deferred = Q.defer();
-    glob(path.join(process.cwd(),"config/models/*.json"), function(err, files) {
+    var applicationPath = this.getParentContext().application.mapPath("/");
+    glob(path.resolve(applicationPath, "./../config/models/*.json"), function(err, files) {
         if (err) {
             return deferred.resolve(err);
         }
@@ -109,17 +120,17 @@ SchemaManager.prototype.getModels = function() {
     return deferred.promise;
 };
 
-SchemaManager.prototype.getModel = function(name) {
-    var deferred = Q.defer();
-    process.nextTick(function() {
-       try {
-           deferred.resolve(require(path.join(process.cwd(),util.format("/config/models/%s.json", name))));
-       } 
-        catch (e) {
-            deferred.reject(e);
-        }
-    });
-    return deferred.promise;
+
+SchemaManager.prototype.getNativeModel = function(name) {
+    try {
+        if (web.common.isEmptyString(name))
+            return;
+        var applicationPath = this.getParentContext().application.mapPath("/");
+        return require(path.resolve(applicationPath, util.format("./../config/models/%s.json", name)));
+    }
+    catch(e) {
+        //
+    }
 };
 
 SchemaManager.prototype.runInContext = function(fn, callback) {
@@ -135,8 +146,12 @@ SchemaManager.prototype.runInContext = function(fn, callback) {
 if (typeof module !== 'undefined') {
     module.exports = {
         SchemaManager:SchemaManager,
-        getSchemaManager: function() {
-            return new SchemaManager();
+        /**
+         * @param {DataContext|*=} parentContext
+         * @returns {SchemaManager}
+         */
+        getSchemaManager: function(parentContext) {
+            return new SchemaManager(parentContext);
         }
     };
 } 

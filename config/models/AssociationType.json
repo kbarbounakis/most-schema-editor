@@ -16,10 +16,16 @@
     }, {
         "name": "description",
         "title": "Description",
-        "type": "Text",
-        "nullable": false
-    }],
-    "privileges":[
+        "type": "Text"
+    }], "constraints":[
+    {
+        "name":"UniqueAssociationTypeName",
+        "description":"Name must be unique across different records",
+        "fields":[
+            "name"
+        ]
+    }
+], "privileges":[
         { "mask":1, "type":"global", "account":"*" },
         { "mask":15, "type":"global" }
     ],

@@ -28,6 +28,13 @@
             "parentField": "name", "childModel": "DataField", "childField": "model",
             "associationType": "association", "cascade": "delete"
         }
+    }], "constraints":[
+    {
+        "name":"UniqueModelListener",
+        "description":"A listener must be unique for each model",
+        "fields":[
+            "name","model"
+        ]
     }],
     "privileges":[
         { "mask":1, "type":"global", "account":"*" },

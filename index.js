@@ -39,10 +39,11 @@ if (typeof exports !== 'undefined')
 {
     module.exports = {
         /**
+         * @param {DataContext|*} context
          * @returns {SchemaManager}
          */
-        getSchemaManager: function() {
-            return mgr.getSchemaManager();
+        getSchemaManager: function(context) {
+            return mgr.getSchemaManager(context);
         },
         /**
          * @param {HttpApplication} app

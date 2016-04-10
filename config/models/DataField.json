@@ -28,8 +28,7 @@
         "name": "title",
         "title": "Title",
         "description": "A title for this field.",
-        "type": "Text",
-      "nullable":false
+        "type": "Text"
     },
   {
     "name": "description",
@@ -41,8 +40,7 @@
     "name": "type",
     "title": "Type",
     "description": "The type of this field.",
-    "type": "Text",
-    "nullable":false
+    "type": "Text"
   },
   {
     "name": "nullable",
@@ -50,6 +48,13 @@
     "description": "Indicates whether this field is nullable or not. The default value is true.",
     "type": "Boolean",
     "value":"javascript:return true;"
+  },
+  {
+    "name": "many",
+    "title": "Many",
+    "description": "Indicates whether this field defines a many-to-many association. The default value is false",
+    "type": "Boolean",
+    "value":"javascript:return false;"
   },
   {
     "name": "expandable",
@@ -83,7 +88,23 @@
     "title": "Calculated Value",
     "description": "Defines the calculated value for this field, if any",
     "type": "Text"
+  },
+  {
+    "name": "derivedFrom",
+    "title": "Derived From",
+    "description": "Defines the model where this field actually belongs.",
+    "type": "Text"
   }
+], "constraints":[
+  {
+    "name":"UniqueModelField",
+    "description":"A field must be unique for each model",
+    "fields":[
+      "name","model"
+    ]
+  }
+], "eventListeners":[
+  { "name":"Data Field Listener", "type":"most-schema-editor/listeners/data-field-mapping-listener"}
 ],"privileges":[
   { "mask":1, "type":"global", "account":"*" },
     { "mask":15, "type":"global" }
