@@ -28,24 +28,20 @@ function SchemaManager(parentContext) {
     self.getContext = function() {
         if (context_) { return context_; }
         context_ = md.createContext("schema");
+
+        var path_ = path.resolve(__dirname, "./../config/models");
         /**
-         * @param name
-         * @returns {DataModel|undefined}
+         * Overrides configuration manager
+         * @returns {DataConfiguration}
          */
-        context_.model = function(name) {
-            if (web.common.isEmptyString(name)) {
-                return;
-            }
-            try {
-                var result = new md.classes.DataModel(require("./../config/models/" + name + ".json"));
-                result.context = context_;
-                return result;
-            }
-            catch(e) {
-                return null;
-            }
+        context_.getConfiguration = function() {
+            return md.cfg.getNamedConfiguration("schema").setModelPath(path_);
         };
 
+        /**
+         * Gets the instance of SchemaManager class which is associated with this context.
+         * @returns {SchemaManager}
+         */
         context_.getSchemaManager = function() {
             return self;
         };
@@ -97,9 +93,8 @@ SchemaManager.prototype.initialize = function() {
                         }
                     });
                 }
-
             });
-            return self.getContext().model("DataModel").silent().save(models).then(function () {
+            return self.getContext().model("DataModel").silent().save(models[0]).then(function () {
                 return cb();
             }).catch(function (err) {
                 return cb(err);

@@ -31,6 +31,12 @@
         { "privilege":"Thing", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
         { "privilege":"Account", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
         { "privilege":"Workspace", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
-        { "privilege":"Project", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 }
+        { "privilege":"DataModel", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
+        { "privilege":"DataField", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
+        { "privilege":"DataAssociationMapping", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
+        { "privilege":"DataView", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
+        { "privilege":"DataViewField", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
+        { "privilege":"EventListener", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 },
+        { "privilege":"Privilege", "workspace": 1, "account": { "name":"Administrators" }, "target":0, "mask":15 }
     ]
 }
