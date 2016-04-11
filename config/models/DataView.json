@@ -49,7 +49,7 @@
       "nullable": false,
       "mapping": {
         "parentModel": "DataModel",
-        "parentField": "name", "childModel": "Privilege", "childField": "model",
+        "parentField": "name", "childModel": "DataView", "childField": "model",
         "associationType": "association", "cascade": "delete"
       }
     }], "constraints":[
@@ -64,14 +64,7 @@
         { "mask":1, "type":"global", "account":"*" },
         { "mask":15, "type":"global" }
     ],
-    "seed":[ {
-            "id":100, "name":"self", "description":"Describes a self privilege."
-        }, {
-            "id":200, "name":"parent", "description":"Describes a parent privilege."
-        }, {
-        "id":300, "name":"item", "description":"Describes an item privilege."
-    }, {
-            "id":400, "name":"global", "description":"Describes a global privilege."
-        }
-    ]
+  "eventListeners":[
+    { "name":"Data View Fields Listener", "type":"most-schema-editor/listeners/data-view-fields-listener"}
+  ]
 }

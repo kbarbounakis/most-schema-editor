@@ -93,7 +93,8 @@
   { "name":"Data Model Fields Listener", "type":"most-schema-editor/listeners/data-model-fields-listener"},
   { "name":"Data Model Privileges Listener", "type":"most-schema-editor/listeners/data-model-privileges-listener"},
   { "name":"Data Model Event Listeners Listener", "type":"most-schema-editor/listeners/data-model-event-listeners-listener"},
-  { "name":"Data Model Constraints Listener", "type":"most-schema-editor/listeners/data-model-constraints-listener"}
+  { "name":"Data Model Constraints Listener", "type":"most-schema-editor/listeners/data-model-constraints-listener"},
+  { "name":"Data Model Views Listener", "type":"most-schema-editor/listeners/data-model-views-listener"}
 ],"privileges":[
   { "mask":1, "type":"global", "account":"*" },
     { "mask":15, "type":"global" }
