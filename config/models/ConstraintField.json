@@ -1,0 +1,26 @@
+{
+    "name": "ConstraintField", "id": 2080, "title": "Constraint Fields", "hidden": false, "sealed": false, "abstract": false,
+    "version": "1.0",
+    "fields": [{
+        "name": "id",
+        "title": "Id",
+        "type": "Counter",
+        "nullable": false,
+        "primary": true
+    }, {
+        "name": "name",
+        "title": "Name",
+        "type": "Text",
+        "nullable": false,
+        "size":80
+    }, {
+        "name": "parent",
+        "title": "Parent",
+        "type": "Constraint",
+        "nullable": false
+    }],
+    "privileges":[
+        { "mask":1, "type":"global", "account":"*" },
+        { "mask":15, "type":"global" }
+    ]
+}

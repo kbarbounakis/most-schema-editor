@@ -37,10 +37,9 @@
       "type": "DataViewField",
       "many":true,
       "mapping": {
-        "associationAdapter": "ViewFields", "parentModel": "DataView",
-        "parentField": "id", "childModel": "DataViewField", "childField": "id",
-        "associationType": "junction", "cascade": "delete",
-        "select":[ "id", "name", "title" ]
+        "parentModel": "DataView",
+        "parentField": "id", "childModel": "DataViewField", "childField": "view",
+        "associationType": "association", "cascade": "delete"
       }
     }
       ,{

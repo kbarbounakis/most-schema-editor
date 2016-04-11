@@ -19,13 +19,12 @@
       "name": "fields",
       "title": "Fields",
       "description": "Contains the collection of constraint fields.",
-      "type": "DataField",
+      "type": "ConstraintField",
       "many":true,
       "mapping": {
-        "associationAdapter": "ConstraintFields", "parentModel": "Constraint",
-        "parentField": "id", "childModel": "DataField", "childField": "id",
-        "associationType": "junction", "cascade": "delete",
-        "select":[ "id", "name", "title" ]
+        "parentModel": "Constraint",
+        "parentField": "id", "childModel": "ConstraintField", "childField": "constraint",
+        "associationType": "association", "cascade": "delete"
       }
     }
       ,{
@@ -50,5 +49,7 @@
         { "mask":1, "type":"global", "account":"*" },
         { "mask":15, "type":"global" }
     ],
-    "seed":[ ]
+    "eventListeners":[
+      { "name":"Constraint Field Listener", "type":"most-schema-editor/listeners/constraint-fields-listener"}
+    ]
 }
