@@ -1,5 +1,5 @@
 {
-    "name": "DataView", "id": 1960, "title": "Views", "hidden": false, "sealed": false, "abstract": false,
+    "name": "View", "id": 1960, "title": "Views", "hidden": false, "sealed": false, "abstract": false,
     "version": "1.0",
     "fields": [{
         "name": "id",
@@ -34,22 +34,22 @@
       "name": "fields",
       "title": "Fields",
       "description": "Contains the collection of constraint fields.",
-      "type": "DataViewField",
+      "type": "ViewField",
       "many":true,
       "mapping": {
-        "parentModel": "DataView",
-        "parentField": "id", "childModel": "DataViewField", "childField": "view",
+        "parentModel": "View",
+        "parentField": "id", "childModel": "ViewField", "childField": "view",
         "associationType": "association", "cascade": "delete"
       }
     }
       ,{
       "name": "model",
       "title": "Model",
-      "type": "DataModel",
+      "type": "Model",
       "nullable": false,
       "mapping": {
-        "parentModel": "DataModel",
-        "parentField": "name", "childModel": "DataView", "childField": "model",
+        "parentModel": "Model",
+        "parentField": "name", "childModel": "View", "childField": "model",
         "associationType": "association", "cascade": "delete"
       }
     }], "constraints":[

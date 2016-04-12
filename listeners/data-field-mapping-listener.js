@@ -31,7 +31,7 @@ exports.afterSave = function (event, callback) {
         }
         //set parent
         event.target.mapping.parent = event.target.id;
-        context.model("DataAssociationMapping").silent().save(event.target.mapping).then(function () {
+        context.model("Mapping").silent().save(event.target.mapping).then(function () {
             return callback();
         }).catch(function (err) {
             return callback(err);

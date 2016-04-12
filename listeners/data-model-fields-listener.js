@@ -29,7 +29,7 @@ exports.afterSave = function (event, callback) {
         if (web.common.isNullOrUndefined(event.target.fields)) {
             return callback();
         }
-        context.model("DataField").silent().save(event.target.fields).then(function () {
+        context.model("Field").silent().save(event.target.fields).then(function () {
             return callback();
         }).catch(function (err) {
             return callback(err);

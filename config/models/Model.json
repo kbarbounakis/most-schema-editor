@@ -1,4 +1,4 @@
-{"name": "DataModel", "id": 2010, "title": "Models", "classPath":"most-schema-editor/models/data-model-model", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+{"name": "Model", "id": 2010, "title": "Models", "classPath":"most-schema-editor/models/data-model-model", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
     {
         "name": "id",
         "title": "Id",
@@ -66,11 +66,11 @@
     "name": "inherits",
     "title": "Inherits",
     "description": "The name of the model which is inherited by this model.",
-    "type": "DataModel",
+    "type": "Model",
     "many":false,
     "mapping": {
-      "parentModel": "DataModel",
-      "parentField": "name", "childModel": "DataModel", "childField": "inherits",
+      "parentModel": "Model",
+      "parentField": "name", "childModel": "Model", "childField": "inherits",
       "associationType": "association", "cascade": "none"
     }
   },
@@ -81,6 +81,42 @@
     "type": "CachingType",
     "value":"javascript:return '1.0';",
     "nullable":false
+  },
+  {
+    "name": "fields",
+    "title": "Fields",
+    "description": "Contains the collection of fields.",
+    "type": "Field",
+    "many":true,
+    "mapping": {
+      "parentModel": "Model", "parentField": "name",
+      "childModel": "Field", "childField": "model",
+      "associationType": "association", "cascade": "delete"
+    }
+  },
+  {
+    "name": "privileges",
+    "title": "Privileges",
+    "description": "Contains the collection of privileges.",
+    "type": "Privilege",
+    "many":true,
+    "mapping": {
+      "parentModel": "Model", "parentField": "name",
+      "childModel": "Privilege", "childField": "model",
+      "associationType": "association", "cascade": "delete"
+    }
+  },
+  {
+    "name": "eventListeners",
+    "title": "Listeners",
+    "description": "Contains the collection of listeners.",
+    "type": "Listener",
+    "many":true,
+    "mapping": {
+      "parentModel": "Model", "parentField": "name",
+      "childModel": "Listener", "childField": "model",
+      "associationType": "association", "cascade": "delete"
+    }
   }
 ], "constraints":[
   {

@@ -1,4 +1,4 @@
-{ "name": "DataAssociationMapping", "id": 2020, "title": "Association Mappings", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+{ "name": "Mapping", "id": 2020, "title": "Association Mappings", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
     {
         "name": "id",
         "title": "Id",
@@ -9,11 +9,11 @@
     {
       "name": "parent",
       "title": "Parent Field",
-      "type": "DataField",
+      "type": "Field",
       "nullable": false,
       "mapping": {
-        "parentModel": "DataField",
-        "parentField": "id", "childModel": "DataAssociationMapping", "childField": "parent",
+        "parentModel": "Field",
+        "parentField": "id", "childModel": "Mapping", "childField": "parent",
         "associationType": "association", "cascade": "none"
       }
     },
@@ -60,7 +60,7 @@
     "expandable":true,
     "mapping": {
       "parentModel": "AssociationType",
-      "parentField": "name", "childModel": "DataAssociationMapping", "childField": "associationType",
+      "parentField": "name", "childModel": "Mapping", "childField": "associationType",
       "associationType": "association", "cascade": "none"
     }
   },
@@ -72,7 +72,7 @@
     "nullable":false,
     "mapping": {
       "parentModel": "CascadeType",
-      "parentField": "name", "childModel": "DataAssociationMapping", "childField": "cascade",
+      "parentField": "name", "childModel": "Mapping", "childField": "cascade",
       "associationType": "association", "cascade": "none"
     }
   }

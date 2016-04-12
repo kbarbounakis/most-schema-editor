@@ -23,17 +23,17 @@
       "many":true,
       "mapping": {
         "parentModel": "Constraint",
-        "parentField": "id", "childModel": "ConstraintField", "childField": "constraint",
+        "parentField": "id", "childModel": "ConstraintField", "childField": "Constraint",
         "associationType": "association", "cascade": "delete"
       }
     }
       ,{
       "name": "model",
       "title": "Model",
-      "type": "DataModel",
+      "type": "Model",
       "nullable": false,
       "mapping": {
-        "parentModel": "DataModel",
+        "parentModel": "Model",
         "parentField": "name", "childModel": "Constraint", "childField": "model",
         "associationType": "association", "cascade": "delete"
       }

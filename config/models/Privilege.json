@@ -34,10 +34,10 @@
     },{
       "name": "model",
       "title": "Model",
-      "type": "DataModel",
+      "type": "Model",
       "nullable": false,
       "mapping": {
-        "parentModel": "DataModel",
+        "parentModel": "Model",
         "parentField": "name", "childModel": "Privilege", "childField": "model",
         "associationType": "association", "cascade": "delete"
       }

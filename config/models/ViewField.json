@@ -1,4 +1,4 @@
-{"name": "DataViewField", "id": 2060, "title": "View Fields", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+{"name": "ViewField", "id": 2060, "title": "View Fields", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
     {
         "name": "id",
         "title": "Id",
@@ -17,7 +17,7 @@
     "name": "parent",
     "title": "Parent",
     "description": "The view of this field.",
-    "type": "DataView",
+    "type": "View",
     "nullable":false
   },
   {

@@ -84,7 +84,7 @@ SchemaManager.prototype.initialize = function() {
                     });
                 }
             });
-            return self.getContext().model("DataModel").silent().save(models).then(function () {
+            return self.getContext().model("Model").silent().save(models).then(function () {
                 return cb();
             }).catch(function (err) {
                 return cb(err);

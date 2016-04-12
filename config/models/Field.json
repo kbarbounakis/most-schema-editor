@@ -1,4 +1,4 @@
-{"name": "DataField", "id": 2020, "title": "Fields", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
+{"name": "Field", "id": 2020, "title": "Fields", "hidden": false, "sealed": false, "abstract": false, "version": "1.0", "fields": [
     {
         "name": "id",
         "title": "Id",
@@ -16,11 +16,11 @@
   {
     "name": "model",
     "title": "Model",
-    "type": "DataModel",
+    "type": "Model",
     "nullable":false,
     "mapping": {
-      "parentModel": "DataModel",
-      "parentField": "name", "childModel": "DataField", "childField": "model",
+      "parentModel": "Model",
+      "parentField": "name", "childModel": "Field", "childField": "model",
       "associationType": "association", "cascade": "delete"
     }
   },

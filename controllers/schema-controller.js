@@ -7,6 +7,7 @@
  */
 var web = require("most-web"),
     util = require("util"),
+    ModelController = require("./model-controller"),
     mgr = require("./schema-manager");
 /**
  * @constructor
@@ -17,22 +18,21 @@ function SchemaBaseController() {
 }
 util.inherits(SchemaBaseController, web.controllers.HttpBaseController);
 
-SchemaBaseController.prototype.index = function (callback) {
-    var self = this;
-    mgr.getSchemaManager().getModels().then(function (result) {
-        return callback(null, self.result(result))
-    }).catch(function (err) {
-        return callback(err);
-    });
-};
-
 SchemaBaseController.prototype.schema = function (callback) {
     var self = this;
-    mgr.getSchemaManager().getModel(self.context.params.name).then(function (result) {
-        return callback(null, self.result(result))
-    }).catch(function (err) {
-        return callback(err);
-    });
+    var ctrl = new ModelController();
+    ctrl.model = mgr.getSchemaManager(self.context).getContext().model(self.context.params.name);
+    return ctrl.index(callback);
 };
+
+// SchemaBaseController.prototype.schema = function (callback) {
+//     var self = this;
+//     mgr.getSchemaManager(self.context).getContext().model("DataModel")
+//         .where("name").equal(self.context.params.name).first().then(function (result) {
+//         return callback(null, self.result(result))
+//     }).catch(function (err) {
+//         return callback(err);
+//     });
+// };
 
 if (typeof module !== 'undefined') module.exports = SchemaBaseController;

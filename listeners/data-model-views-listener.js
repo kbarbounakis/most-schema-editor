@@ -30,7 +30,7 @@ exports.afterSave = function (event, callback) {
             return callback();
         }
         event.target.views.forEach(function(x) { x.model = event.target.name; });
-        context.model("DataView").silent().save(event.target.views).then(function () {
+        context.model("View").silent().save(event.target.views).then(function () {
             return callback();
         }).catch(function (err) {
             return callback(err);

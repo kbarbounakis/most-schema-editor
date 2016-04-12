@@ -32,7 +32,7 @@ exports.afterSave = function (event, callback) {
         event.target.fields.forEach(function(x) {
            x.parent = event.target.id; 
         });
-        context.model("DataViewField").silent().save(event.target.fields).then(function () {
+        context.model("ViewField").silent().save(event.target.fields).then(function () {
             return callback();
         }).catch(function (err) {
             return callback(err);

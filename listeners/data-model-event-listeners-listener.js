@@ -30,7 +30,7 @@ exports.afterSave = function (event, callback) {
             return callback();
         }
         event.target.eventListeners.forEach(function(x) { x.model = event.target.name; });
-        context.model("EventListener").silent().save(event.target.eventListeners).then(function () {
+        context.model("Listener").silent().save(event.target.eventListeners).then(function () {
             return callback();
         }).catch(function (err) {
             return callback(err);
