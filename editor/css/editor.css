@@ -1,0 +1,14 @@
+body .content-wrapper {
+  background-color: #FFF;
+  padding: 40px 40px;
+}
+body .box {
+  border-radius: 0;
+  border-top: none;
+}
+body .box .box-header {
+  padding: 20px 10px;
+}
+body .input-group-search {
+  width: 150px;
+}

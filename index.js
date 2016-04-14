@@ -34,7 +34,6 @@
 var SchemaBaseController = require('./controllers/schema-controller'),
     mgr = require('./controllers/schema-manager'),
     EditorBaseController = require('./controllers/editor-controller'),
-    ModelController = require('./controllers/model-controller'),
     path = require('path');
 if (typeof exports !== 'undefined')
 {
@@ -51,12 +50,12 @@ if (typeof exports !== 'undefined')
          */
         extend:function(app) {
             //register controllers
-            app.controller('schema', SchemaBaseController);
-            app.controller('editor', EditorBaseController);
-            app.controller('DataModel', ModelController);
+            app.controller('schema', SchemaBaseController)
+                .controller('editor', EditorBaseController);
             //register routes
             app.config.routes.unshift(
-                { "url":"/schema/:action.json",  "mime":"application/json", "controller":"schema" },
+                { "url":"/schema/",  "mime":"text/html", "action":"index", "controller":"editor", path:path.join(__dirname, 'views') },
+                { "url":"/schema/:name/index.json", "action":"index",  "mime":"application/json", "controller":"schema" },
                 { "url":"/editor/",  "mime":"text/html", "action":"index", "controller":"editor", path:path.join(__dirname, 'views') }
             );
         }

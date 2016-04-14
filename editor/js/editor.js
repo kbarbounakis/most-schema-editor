@@ -13,7 +13,7 @@ angular.module('editor', ['ngMessages','ui.router', 'editor.controllers', 'edito
                 url: "/app",
                 templateUrl: "/editor/templates/app.html"
             }).state('model', {
-            url: "/model/:name",
-            templateUrl: "/schema/model.html"
+            url: "/app/model/:name",
+            templateUrl: "/editor/templates/model.html"
         });
     });

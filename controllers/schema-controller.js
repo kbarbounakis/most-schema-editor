@@ -7,32 +7,36 @@
  */
 var web = require("most-web"),
     util = require("util"),
-    ModelController = require("./model-controller"),
-    mgr = require("./schema-manager");
+    manager = require("./schema-manager");
 /**
  * @constructor
- * @augments {HttpBaseController}
+ * @augments {HttpDataController}
  */
 function SchemaBaseController() {
     SchemaBaseController.super_.call(this);
+    
+    var self = this, schemaManager_;
+    self.getSchemaContext = function() {
+        if (schemaManager_) {
+            return schemaManager_;
+        }
+        if (typeof self.context === 'undefined' || self.context == null) {
+            return;
+        }
+        schemaManager_ = manager.getSchemaManager(this.context).getContext();
+        return schemaManager_;
+    }
+    
 }
-util.inherits(SchemaBaseController, web.controllers.HttpBaseController);
+util.inherits(SchemaBaseController, web.controllers.HttpDataController);
 
-SchemaBaseController.prototype.schema = function (callback) {
-    var self = this;
-    var ctrl = new ModelController();
-    ctrl.model = mgr.getSchemaManager(self.context).getContext().model(self.context.params.name);
-    return ctrl.index(callback);
+SchemaBaseController.prototype.index = function (callback) {
+
+    if (web.common.isEmptyString(this.context.params.name)) {
+        return callback(new web.common.HttpBadRequest());
+    }
+    this.model = this.getSchemaContext().model(this.context.params.name);
+    return SchemaBaseController.super_.prototype.index.call(this, callback);
 };
-
-// SchemaBaseController.prototype.schema = function (callback) {
-//     var self = this;
-//     mgr.getSchemaManager(self.context).getContext().model("DataModel")
-//         .where("name").equal(self.context.params.name).first().then(function (result) {
-//         return callback(null, self.result(result))
-//     }).catch(function (err) {
-//         return callback(err);
-//     });
-// };
 
 if (typeof module !== 'undefined') module.exports = SchemaBaseController;

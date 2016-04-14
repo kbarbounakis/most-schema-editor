@@ -12,6 +12,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="/editor/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/editor/css/all-skins.css">
+    <link rel="stylesheet" href="/editor/css/editor.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,7 +60,6 @@
             </div>
         </nav>
     </header>
-
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
@@ -91,6 +91,8 @@
     </aside>
 </div>
 <!-- content -->
-<div ui-view=""></div>
+<div class="content-wrapper">
+    <div ui-view=""></div>
+</div>
 </body>
 </html>
